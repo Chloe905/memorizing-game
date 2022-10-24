@@ -1,0 +1,108 @@
+* {
+	font-family: "Mukta", "Noto Sans TC", sans-serif;
+}
+
+#cards {
+  display: flex;
+  flex-flow: row wrap;
+  width: 85%;
+  margin: 0 auto;
+}
+.card {
+  box-sizing: border-box;
+  /* 每張卡片在牌桌上排列 */
+  flex: 7% 1 1;/* 每個 item 分配容器寬度，一排放13張，100/13=7...，每張占螢幕7%，flex-basis設7% 。felx-grow:1->分配剩餘空間*/
+  height: 8vw; /* 依視窗的寬度等比例變化，此設為占螢幕比例的8% */
+  border: 2px solid #e0e0e0;
+  margin: 2px;
+  
+  /* 卡片內部排列 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.card img{
+  max-width: 30%;
+  align-self: center;
+}
+
+.card p{
+  margin: 3px;
+  font-size: 10px;
+}
+
+.card p:last-child{
+  transform: rotate(180deg);
+}
+
+.back {
+  background: url('https://assets-lighthouse.alphacamp.co/uploads/image/file/9222/ExportedContentImage_00.png');
+  background-size: cover;
+}
+
+.paired {
+  background-color: #dae0e3;
+}
+
+#header {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: flex-end;
+  width: 85%;
+}
+
+#header .title {
+  display: flex;
+}
+
+#header .title img {
+  max-width: 3em;
+  padding-right: 0.5em;
+}
+
+#header .score {
+  margin: 0;
+  color: #6c90ac;
+}
+
+#header .tried {
+  margin-top: 0;
+}
+
+/* 錯誤的牌要閃爍 */
+ .wrong {
+  animation-name: wrongAnimation;
+  animation-duration: 0.2s; /* 每次閃0.2S */
+  animation-iteration-count: 5; /* 閃5次 */  /* -> 總共1s */
+ }
+
+@keyframes wrongAnimation {
+  to {
+    border: 2px solid #ffd54f;
+  }
+}
+
+.completed {
+  position: absolute;
+  z-index: 100;
+  top :33vh;    /* RDW view-height 隨視窗縮放 */
+  background-color: rgba(13, 22, 41, 0.6);
+  width: 100vw;  /* RDW view-width 隨視窗縮放 */
+  padding: 50px 0;
+}
+
+.completed > p {
+  font-size: 1.5em;
+  color : whitesmoke;
+  text-align: center;
+  margin: 0;
+  
+}
+
+.completed > p:first-child {
+  font-size: 3em;
+  font-weight: 700;
+  color:pink;
+}
